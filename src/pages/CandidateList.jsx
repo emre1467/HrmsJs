@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Icon, Label, Menu, Table, Header } from 'semantic-ui-react'
 import CandidateService from '../services/candidateService'
 
+
 export default function CandidateList() {
 
     const [candidates, setCandidates] = useState([])
@@ -9,7 +10,7 @@ export default function CandidateList() {
     useEffect(() => {
         let candidateService = new CandidateService()
         candidateService.getCandidate().then(result => setCandidates(result.data.data))
-    })
+    },[])
 
     return (
         <div>

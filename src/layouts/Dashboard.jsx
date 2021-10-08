@@ -4,10 +4,16 @@ import { Grid } from 'semantic-ui-react'
 import CandidateList from '../pages/CandidateList'
 import EmployerList from '../pages/EmployerList'
 import JobTitleList from '../pages/JobTitleList'
+import JobAdvertList from '../pages/JobAdvertList'
+
+import Filter from '../layouts/Filter'
 
 
-import Navi from './Navi'
-import SideBar from './SideBar'
+import { Route } from 'react-router-dom'
+import JobTitleDetail from '../pages/JobTitleDetail'
+import { Link } from 'react-router-dom'
+import AddJobPosting from '../pages/AddJobPosting'
+
 
 export default function Dashboard() {
     return (
@@ -15,33 +21,25 @@ export default function Dashboard() {
             <Grid>
                 <Grid.Row>
                     <Grid.Column width={4}>
-                        <SideBar />
+                       
                     </Grid.Column>
 
-                    <Grid.Column width={12}>
-                        <EmployerList />
+                    <Grid.Column width={16}>
+                        <Route exact path="/employers" component={EmployerList}/>
+                        <Route exact path="/candidates" component={CandidateList}/>
+                        <Route exact path="/jobAdverts" component={JobAdvertList}/>
+                        <Route exact path="/jobTitles" component={JobTitleList}/>
+                        <Route  path="/jobTitles/:id" component={JobTitleDetail}/>
+                        <Route exact path="/Filter" component={Filter}/>
+                        <Route exact path="/jobAdverts" component={JobTitleList}/>
+
+
                     </Grid.Column>
+                    
                 </Grid.Row>
-                <Grid.Row>
-
-                    <Grid.Column width={4}>
-
-                    </Grid.Column>
-                    <Grid.Column width={12}>
-                        <CandidateList />
-                    </Grid.Column>
-
-                </Grid.Row>
-                <Grid.Row>
-
-                    <Grid.Column width={4}>
-
-                    </Grid.Column>
-                    <Grid.Column width={12}>
-                        <JobTitleList />
-                    </Grid.Column>
-
-                </Grid.Row>
+               
+               <AddJobPosting/>
+              
             </Grid>
 
 

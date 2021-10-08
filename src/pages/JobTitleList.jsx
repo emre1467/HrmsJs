@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Icon, Label, Menu, Table, Header } from 'semantic-ui-react'
-import JobTitleService from '../services/jobTitleService'
+import { Link } from 'react-router-dom'
+import { Icon,  Table, Header } from 'semantic-ui-react'
+import JobTitleService from '../services/jobPositionService'
 
 export default function JobTitleList() {
 
@@ -9,9 +10,10 @@ export default function JobTitleList() {
     useEffect(() => {
         let jobTitleService = new JobTitleService()
         jobTitleService.getJobTitles().then(result => setJobTitles(result.data.data))
-    })
+    },[])
 
     return (
+        
         <div>
             <Header as="h2">
                 <Icon name="list alternate outline" />
@@ -29,11 +31,12 @@ export default function JobTitleList() {
                     jobTitles.map((jobTitle) => (
                         <Table.Row key={jobTitle.id}>
                           
-                            <Table.Cell>{jobTitle.name} </Table.Cell>
+                            <Table.Cell><Link to ={`/jobTitles/${jobTitle.id}`} >{jobTitle.name} </Link></Table.Cell>
                         </Table.Row>
 
                     ))
                 }
+                
                 </Table.Body>
             </Table>
         </div>

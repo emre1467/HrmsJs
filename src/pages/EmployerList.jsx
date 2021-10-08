@@ -9,7 +9,7 @@ export default function EmployerList() {
     useEffect(() => {
         let employerService = new EmployerService()
         employerService.getEmployers().then(result => setEmployers(result.data.data))
-    })
+    },[])
 
 
 
@@ -26,6 +26,8 @@ export default function EmployerList() {
                         <Table.HeaderCell>Web Site</Table.HeaderCell>
                         <Table.HeaderCell>Phone Number</Table.HeaderCell>
                         <Table.HeaderCell>Email</Table.HeaderCell>
+                        <Table.HeaderCell>Is Verified</Table.HeaderCell>
+
                     </Table.Row>
                 </Table.Header>
 
@@ -36,6 +38,8 @@ export default function EmployerList() {
                             <Table.Cell>{employer.webSite}</Table.Cell>
                             <Table.Cell>{employer.phoneNumber} </Table.Cell>
                             <Table.Cell>{employer.email} </Table.Cell>
+                            <Table.Cell>{employer.isVerifiedByEmployee ? "Verified By Employee" : "Not Verified Yet"} </Table.Cell>
+
                         </Table.Row>
 
                     ))
